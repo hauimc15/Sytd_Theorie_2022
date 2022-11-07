@@ -8,6 +8,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
@@ -41,6 +44,14 @@ class ScooterRepositoryUnitTest {
         Manufactures manufactures = manufacturesRepository.getReferenceById(1L);
         List<Scooters> scootersList = iscooterRepository.findScootersByModels_Modelid_Manufactures(manufactures);
         Assertions.assertEquals(2,scootersList.size());
+
+    }
+
+    @Test
+    void getScooterByCOuntryOrderbySerialNoTest(){
+        Pageable pageable= PageRequest.of(1,2);
+        Page<Scooters> scooters = iscooterRepository.getScooterByCountryOOrderBySerialNumber("AUT",pageable);
+        Assertions.assertEquals("SEI123GHJ58", scooters.getContent().get(0).getSerialNumber());
 
     }
 }

@@ -33,3 +33,15 @@ VALUES ('SEI123GHJ56',0,50,'2022-09-01',null,1,1,'Hyper Hyper'),
 
 INSERT INTO employees (id, version, first_name, last_name, social_security_number, city_id)
 VALUES (1, 0, 'Test', 'Employee', '4221 040203', 1);
+
+insert into customer (version, birthdate, id, first_name, identificationnumber, last_name, password, bankaccountnumber)
+values (1, '2002-8-8', 87, 'Hans', '575478', 'Huber', 'pw1', 'ASDFASDF'),
+       (1, '2000-8-4', 88, 'Sabine', '575478', 'Kurz', 'pw2', 'ASDFASDF');
+
+insert into payment_type (id, version, type)
+values (0,0, 'open'),(1,0, 'paid');
+
+insert into booking (version, payment_type_id, costs, end_Date, start_Date, customer_id, scooters_serial_number)
+values (1, 0, 500, '2021-10-15', '2021-10-14',87,  'SEI123GHJ56' ),
+       (1, 0, 800, '2021-09-15', '2021-09-14',87,  'SEI123GHJ58'),
+       (1, 1, 200, '2021-08-15', '2021-08-14',87,  'SEI123GHJ50');
